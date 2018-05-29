@@ -11,7 +11,7 @@ var map = L.map( 'map', {
 
 
 L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
- attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+ attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
  subdomains: ['a','b','c']
 }).addTo( map );
 
@@ -26,6 +26,11 @@ L.easyButton('<span class="star">&starf;</span>', function(){alert('button works
 */
 
 
+
+
+//----------------------------------------------------------------------------------------------------------------//for NavBar
+L.control.navbar().addTo(map);
+//----------------------------------------------------------------------------------------------------------------//for Cluster On/Off
 // /*
 var toggle = L.easyButton({
   id: 'eli',
@@ -33,7 +38,7 @@ var toggle = L.easyButton({
     stateName: 'add-markers',
     icon: 'fa-map-marker',
     // icon: '<span class="diamond">&diamond;</span>',
-    title: 'Cluster Off',
+    title: 'Cluster On',
     onClick: function(control) {
         disable();
         control.state('remove-markers');
@@ -42,7 +47,7 @@ var toggle = L.easyButton({
     stateName: 'remove-markers',
     icon: 'fa-undo',
     // icon: '<span class="star">&olarr;</span>',
-    title: 'Cluster On',
+    title: 'Cluster Off',
     onClick: function(control) {
         enable();
         control.state('add-markers');
@@ -52,19 +57,6 @@ var toggle = L.easyButton({
 toggle.addTo(map);
 // */
 
-L.easyButton( 'icon ion-home', function(){
-  alert('you just clicked an ionicon');
-});
-
-
-L.easyButton( '<i class="material-icons">face</i>', function(){
-  alert('you just clicked a material icon');
-});
-
-
-//----------------------------------------------------------------------------------------------------------------
-//for NavBar
-L.control.navbar().addTo(map);
 //----------------------------------------------------------------------------------------------------------------
 
 var myURL = jQuery( 'script[src$="leaf-demo_v2.js"]' ).attr( 'src' ).replace( 'leaf-demo_v2.js', '' );
@@ -82,7 +74,7 @@ var markerClusters = L.markerClusterGroup({
     // spiderfyOnMaxZoom: false,
     // showCoverageOnHover: false,
     // zoomToBoundsOnClick: false
-    maxClusterRadius: 50
+    maxClusterRadius: 60
 });
 
 var markers = data.records;
@@ -106,11 +98,9 @@ map.addLayer( markerClusters );
 //----------------------------------------------------------------------------------------------------------------
 //for enable disable cluster
 function enable() {
-    // alert(markerClusters.freezeAtZoom('max'));
     markerClusters.enableClustering();
 }
 function disable() {
-    // alert(markerClusters.freezeAtZoom('max'));
     markerClusters.disableClustering();
 }
 //----------------------------------------------------------------------------------------------------------------
