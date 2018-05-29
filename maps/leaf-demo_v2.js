@@ -16,37 +16,51 @@ L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo( map );
 
 
-L.easyButton( '<strong>Off</strong>', function(){
-  disable();
-}).addTo(map);
-L.easyButton( '<strong>On</strong>', function(){
-  enable();
-}).addTo(map);
+/* working but used 'toggle' instead
+L.easyButton('<strong>Off</strong>', function(){disable();}).addTo(map);
+L.easyButton('<strong>On</strong>' , function(){enable(); }).addTo(map);
+*/
 
-// L.easyButton('icon fa-star', function(){alert('button works')}).addTo(map);
+/* sample of using 'star' in css
+L.easyButton('<span class="star">&starf;</span>', function(){alert('button works')}).addTo(map);
+*/
 
-/*
+
+// /*
 var toggle = L.easyButton({
-  states: [{'<strong>Off</strong>',
+  id: 'eli',
+  states: [{
     stateName: 'add-markers',
-    // icon: 'fa-map-marker',
+    icon: 'fa-map-marker',
+    // icon: '<span class="diamond">&diamond;</span>',
     title: 'Cluster Off',
-    onClick: function() {
+    onClick: function(control) {
         disable();
         control.state('remove-markers');
     }
-  }, {'<strong>On</strong>',
-    // icon: 'fa-undo',
+  }, {
     stateName: 'remove-markers',
+    icon: 'fa-undo',
+    // icon: '<span class="star">&olarr;</span>',
     title: 'Cluster On',
-    onClick: function() {
+    onClick: function(control) {
         enable();
         control.state('add-markers');
     }
   }]
 });
 toggle.addTo(map);
-*/
+// */
+
+L.easyButton( 'icon ion-home', function(){
+  alert('you just clicked an ionicon');
+});
+
+
+L.easyButton( '<i class="material-icons">face</i>', function(){
+  alert('you just clicked a material icon');
+});
+
 
 //----------------------------------------------------------------------------------------------------------------
 //for NavBar
@@ -92,11 +106,11 @@ map.addLayer( markerClusters );
 //----------------------------------------------------------------------------------------------------------------
 //for enable disable cluster
 function enable() {
-    alert(markerClusters.freezeAtZoom('max'));
+    // alert(markerClusters.freezeAtZoom('max'));
     markerClusters.enableClustering();
 }
 function disable() {
-    alert(markerClusters.freezeAtZoom('max'));
+    // alert(markerClusters.freezeAtZoom('max'));
     markerClusters.disableClustering();
 }
 //----------------------------------------------------------------------------------------------------------------
