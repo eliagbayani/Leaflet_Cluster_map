@@ -13,6 +13,13 @@ var map = L.map( 'map', {
   loadingControl: true
 });
 
+
+//listener, good source here: https://leafletjs.com/reference-1.3.0.html#map-zoomend
+map.on('zoomend', function() {
+    enable();
+});
+
+// L.DomUtil.TRANSITION = false; --- no effect
 // var map_x = L.map('toggle-map', {scrollWheelZoom: false}).setView([37.8, -96], 4); //just other syntax with other attributes
 
 
@@ -52,6 +59,8 @@ var markerClusters = L.markerClusterGroup({
     // showCoverageOnHover: false,
     // zoomToBoundsOnClick: false
     maxClusterRadius: 60
+    // animate: false,              --- no effect
+    // animateAddingMarkers:false   --- no effect
     /* working-sshhh, only if u want to customize
     ,
     iconCreateFunction: function(cluster) {
@@ -115,7 +124,8 @@ var toggle = L.easyButton({
     }
   }]
 });
-if(markers.length < 15000) {
+
+if(markers.length < 10000) {
     toggle.addTo(map);
 }
 // */
@@ -123,15 +133,19 @@ if(markers.length < 15000) {
 //----------------------------------------------------------------------------------------------------------------
 //for enable disable cluster
 function enable() {
-    alert("view port: "+getFeaturesInView(map));
+    // alert("view port: "+getFeaturesInView());
     markerClusters.enableClustering();
 }
 function disable() {
-    alert(markers.length);
-    alert("view port: "+getFeaturesInView(map));
-    markerClusters.disableClustering();
+    // alert(markers.length);
+    // alert("view port: "+getFeaturesInView());
+    if(getFeaturesInView() <= 5000) {markerClusters.disableClustering();}
+    else {
+        alert("Cannot un-cluster. Too many points.");
+        control.state('add-markers');
+    }
 }
-function getFeaturesInView(map) {
+function getFeaturesInView() { //https://stackoverflow.com/questions/22081680/get-a-list-of-markers-layers-within-current-map-bounds-in-leaflet
   var features = [];
   var i = 0;
   map.eachLayer( function(layer) {
@@ -139,34 +153,16 @@ function getFeaturesInView(map) {
       if(map.getBounds().contains(layer.getLatLng())) {
         features.push(layer.feature);
         // alert(console.debug(layer));
-
         if(isNaN(layer._childCount)){i = i + 1;}
-        else {i = i + layer._childCount;}
-            
-
-        // alert("childCount = " + layer._childCount);
-
-        //__parent: Object { _zoom: 6, _childCount: 8, _iconNeedsUpdate: true, … }
-        // alert(layer['_markers']);
-        // alert(JSON.stringify(layer.feature));
-        // alert(layer.feature);
-        // alert(layer.getLatLng().length);
+        else                        {i = i + layer._childCount;}
       }
     }
   });
-
-  alert(i);
-  
-  
-  // var obj = features;
-  // var out = '';
-  // for (var i in obj) {
-  //     out += i + ": " + obj[i] + "\n";
-  // }
-  // alert(out);
-  
-  
-  return features.length;
+  /* working OK
+  alert("total latlongs = "+i);                 //total coordinates, lat longs
+  alert("total markers = "+features.length);    //total no of markers e.g. dot icon + cluster icon
+  */
+  return i; //total coordinates in current view
 }
 //---------------------------------------------------------------------------------------------------------------- from: http://webdevzoom.com/get-center-of-polygon-triangle-and-area-using-javascript-and-php/
 // var getCentroid = function (coord) 

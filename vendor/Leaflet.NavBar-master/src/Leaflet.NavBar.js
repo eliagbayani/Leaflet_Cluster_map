@@ -50,6 +50,10 @@
     },
 
     _goHome: function() {
+        
+        //from lead-demo_v2.js
+        enable();
+        
       if (this.options.bbox){
         try {
           this._map.fitBounds(this.options.bbox);
@@ -62,6 +66,10 @@
 
     _goBack: function() {
       if (this._curIndx !== 0) {
+
+          //from lead-demo_v2.js
+          enable();
+          
         this._map.off('moveend', this._updateHistory, this);
         this._map.once('moveend', function() {this._map.on('moveend', this._updateHistory, this);}, this);
         this._curIndx--;
@@ -73,6 +81,10 @@
 
     _goFwd: function() {
       if (this._curIndx != this._viewHistory.length - 1) {
+
+          //from lead-demo_v2.js
+          enable();
+          
         this._map.off('moveend', this._updateHistory, this);
         this._map.once('moveend', function() {this._map.on('moveend', this._updateHistory, this);}, this);
         this._curIndx++;
