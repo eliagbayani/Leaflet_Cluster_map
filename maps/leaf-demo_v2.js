@@ -139,7 +139,7 @@ function enable() {
 function disable() {
     // alert(markers.length);
     // alert("view port: "+getFeaturesInView());
-    if(getFeaturesInView() <= 5000) {markerClusters.disableClustering();}
+    if(getFeaturesInView() <= 1000) {markerClusters.disableClustering();}
     else {
         alert("Cannot un-cluster. Too many points.");
         control.state('add-markers');
