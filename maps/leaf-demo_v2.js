@@ -15,7 +15,7 @@ var map = L.map( 'map', {
 
 
 //listener, good source here: https://leafletjs.com/reference-1.3.0.html#map-zoomend
-map.on('zoomend', function() {
+map.on('zoomstart', function() {
     enable();
 });
 
@@ -125,9 +125,9 @@ var toggle = L.easyButton({
   }]
 });
 
-if(markers.length < 10000) {
+// if(markers.length < 15000) {
     toggle.addTo(map);
-}
+// }
 // */
 
 //----------------------------------------------------------------------------------------------------------------

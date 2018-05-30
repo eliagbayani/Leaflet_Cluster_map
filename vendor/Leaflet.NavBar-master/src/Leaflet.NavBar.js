@@ -52,7 +52,7 @@
     _goHome: function() {
         
         //from lead-demo_v2.js
-        enable();
+        // enable();
         
       if (this.options.bbox){
         try {
@@ -68,7 +68,7 @@
       if (this._curIndx !== 0) {
 
           //from lead-demo_v2.js
-          enable();
+          // enable();
           
         this._map.off('moveend', this._updateHistory, this);
         this._map.once('moveend', function() {this._map.on('moveend', this._updateHistory, this);}, this);
@@ -83,7 +83,7 @@
       if (this._curIndx != this._viewHistory.length - 1) {
 
           //from lead-demo_v2.js
-          enable();
+          // enable();
           
         this._map.off('moveend', this._updateHistory, this);
         this._map.once('moveend', function() {this._map.on('moveend', this._updateHistory, this);}, this);
