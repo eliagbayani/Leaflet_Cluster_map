@@ -1,6 +1,3 @@
-// See post: http://asmaloney.com/2015/06/code/clustering-markers-on-leaflet-maps
-// if we want to show left pan or the like: https://github.com/stefanocudini/leaflet-list-markers
-
 latlng = get_all_latlongs(data.records);
 center_map = getCentroid(latlng);
 
@@ -13,38 +10,21 @@ var map = L.map( 'map', {
   loadingControl: true
 });
 
-
 //listener, good source here: https://leafletjs.com/reference-1.3.0.html#map-zoomend
 map.on('zoomstart', function() {
     enable();
 });
-
-// L.DomUtil.TRANSITION = false; --- no effect
-// var map_x = L.map('toggle-map', {scrollWheelZoom: false}).setView([37.8, -96], 4); //just other syntax with other attributes
-
 
 L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
  subdomains: ['a','b','c']
 }).addTo( map );
 
-
-/* working but used 'toggle' instead
-L.easyButton('<strong>Off</strong>', function(){disable();}).addTo(map);
-L.easyButton('<strong>On</strong>' , function(){enable(); }).addTo(map);
-*/
-
-/* sample of using 'star' in css
-L.easyButton('<span class="star">&starf;</span>', function(){alert('button works')}).addTo(map);
-*/
-
-
 //----------------------------------------------------------------------------------------------------------------//for NavBar
 L.control.navbar().addTo(map);
 //----------------------------------------------------------------------------------------------------------------
 
 var myURL = jQuery( 'script[src$="leaf-demo_v2.js"]' ).attr( 'src' ).replace( 'leaf-demo_v2.js', '' );
-
 var myIcon = L.icon({
   iconUrl: myURL + 'images/pin24.png',
   iconRetinaUrl: myURL + 'images/pin48.png',
@@ -69,20 +49,9 @@ var markerClusters = L.markerClusterGroup({
     */
 });
 
-
-
 var markers = data.records;
-// alert(markers.length);
 var latlng = [];
-for ( var i = 0; i < markers.length; ++i )
-{
-  /*
-  var popup = markers[i].name +
-              '<br/>' + markers[i].a +
-              '<br/><b>IATA/FAA:</b> ' + markers[i].b +
-              '<br/><b>ICAO:</b> ' + markers[i].c +
-              '<br/><b>Timezone:</b> ' + markers[i].d;
-  */
+for ( var i = 0; i < markers.length; ++i ) {
   pic = markers[i];
   var title = '<i>'+pic.b+'</i>';                                                                                                 //sciname
   var infoHtml = '<div class="info"><h3>' + title + '</h3>';
@@ -96,26 +65,13 @@ for ( var i = 0; i < markers.length; ++i )
   if(pic.m) {infoHtml += 'Event date: ' + pic.m + '<br/>';}                                                                       //eventDate
   infoHtml += '</div>';
 
-
-
   var m = L.marker( [markers[i].h, markers[i].i], {icon: myIcon} )
                   .bindPopup( infoHtml );
-
   markerClusters.addLayer( m );
   latlng.push([markers[i].h, markers[i].i]); //add value to array latlng
 }
 map.addLayer( markerClusters );
 
-
-//---------------------------------------------------------------------------------------------------------------- to center map 
-/* working but moved above
-var center = getCentroid(latlng);
-map.setView(center, 2); //can pass array e.g. var center to setView()
-*/
-/* other options: https://stackoverflow.com/questions/12735303/how-to-change-the-map-center-in-leaflet
-map.setView({lat:center[0], lng:center[1]}, 2); //or can pass object to setView()
-map.panTo({lat:center[0], lng:center[1]});
-*/
 //----------------------------------------------------------------------------------------------------------------//for Cluster On/Off
 // /*
 var toggle = L.easyButton({
@@ -149,11 +105,9 @@ var toggle = L.easyButton({
 //----------------------------------------------------------------------------------------------------------------
 //for enable disable cluster
 function enable() {
-    // alert("view port: "+getFeaturesInView());
     markerClusters.enableClustering();
 }
 function disable() {
-    // alert(markers.length);
     // alert("view port: "+getFeaturesInView());
     if(getFeaturesInView() <= 1000) {markerClusters.disableClustering();}
     else {
@@ -174,14 +128,13 @@ function getFeaturesInView() { //https://stackoverflow.com/questions/22081680/ge
       }
     }
   });
-  /* working OK
+  /* working OK - good debug
   alert("total latlongs = "+i);                 //total coordinates, lat longs
   alert("total markers = "+features.length);    //total no of markers e.g. dot icon + cluster icon
   */
-  return i; //total coordinates in current view
+  return i; //total coordinates (points) in current view
 }
 //---------------------------------------------------------------------------------------------------------------- from: http://webdevzoom.com/get-center-of-polygon-triangle-and-area-using-javascript-and-php/
-// var getCentroid = function (coord) 
 function getCentroid(coord)
 {
     var center = coord.reduce(function (x,y) {
