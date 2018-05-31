@@ -1,7 +1,0 @@
-debug/
-docs/
-*.map
-build/
-src/
-.gitignore
-Jakefile.js

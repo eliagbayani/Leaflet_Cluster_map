@@ -73,7 +73,6 @@ for ( var i = 0; i < markers.length; ++i ) {
 map.addLayer( markerClusters );
 
 //----------------------------------------------------------------------------------------------------------------//for Cluster On/Off
-// /*
 var toggle = L.easyButton({
   id: 'eli',
   states: [{
@@ -100,7 +99,6 @@ var toggle = L.easyButton({
 // if(markers.length < 15000) {
     toggle.addTo(map);
 // }
-// */
 
 //----------------------------------------------------------------------------------------------------------------
 //for enable disable cluster
