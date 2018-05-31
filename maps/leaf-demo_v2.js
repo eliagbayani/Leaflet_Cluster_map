@@ -84,7 +84,7 @@ for ( var i = 0; i < markers.length; ++i )
               '<br/><b>Timezone:</b> ' + markers[i].d;
   */
   pic = markers[i];
-  var title = pic.b;                                                                                                              //sciname
+  var title = '<i>'+pic.b+'</i>';                                                                                                 //sciname
   var infoHtml = '<div class="info"><h3>' + title + '</h3>';
   if(pic.l)       {infoHtml += '<div class="info-body"><img src="' + pic.l + '" class="info-img"/></div><br/>';}                  //pic_url
   if(pic.a) {infoHtml += 'Catalog number: ' + pic.a + '<br/>';}                                                                   //catalogNumber

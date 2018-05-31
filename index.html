@@ -4,15 +4,27 @@
     <title>Leaflet Cluster Example</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
+    <!-- 
     <link rel="stylesheet"                 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css" />
     <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css" />
+    -->
+    <link rel="stylesheet"                 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/css/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/css/MarkerCluster.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/css/MarkerCluster.Default.css" />
 
+    
     <!-- Important plugins: https://leafletjs.com/plugins.html -->
 
-    <!-- for fullscreen --> <!-- from here: https://github.com/Leaflet/Leaflet.fullscreen -->
+    <!-- for fullscreen --> <!-- from here: https://github.com/Leaflet/Leaflet.fullscreen 
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+    <link href='vendor/mapbox.js_plugins_leaflet-fullscreen_v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+    <link href='http://localhost/Leaflet_Cluster_map/vendor/mapbox.js_plugins_leaflet-fullscreen_v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+    -->
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+    
     
     <!-- for NavBar --> <!-- from here: https://github.com/davidchouse/Leaflet.NavBar -->
     <link href='vendor/Leaflet.NavBar-master/src/Leaflet.NavBar.css' rel='stylesheet' />
@@ -23,12 +35,22 @@
     <!-- loading indicator -->
     <link href='vendor/Leaflet.loading-master/src/Control.Loading.css' rel='stylesheet' />
     
+    <!--
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
     <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
     <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js'></script>
+    -->
+    <script type='text/javascript' src='vendor/js/jquery.min.js'></script>
+    <script type='text/javascript' src='vendor/js/leaflet.js'></script>
+    <script type='text/javascript' src='vendor/js/leaflet.markercluster.js'></script>
+
     
-    <!-- for fullscreen -->
+    <!-- for fullscreen 
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+    <script src='vendor/mapbox.js_plugins_leaflet-fullscreen_v1.0.1/Leaflet.fullscreen.min.js'></script>
+    -->
+    <script src='vendor/mapbox.js_plugins_leaflet-fullscreen_v1.0.1/Leaflet.fullscreen.min.js'></script>
+
     
     <!-- for NavBar -->
     <script src='vendor/Leaflet.NavBar-master/src/Leaflet.NavBar.js'></script>
@@ -44,7 +66,7 @@
   </head>
   <body>
     <div id="map" style="width: 1050px; height: 520px; border: 1px solid #AAA;"></div>
-    <script type='text/javascript' src='data/1.json'></script> <!-- 5169 281 big -->
+    <script type='text/javascript' src='data/5169.json'></script> <!-- 5169 281 big -->
     <script type='text/javascript' src='maps/leaf-demo_v2.js'></script>
   </body>
 </html>
