@@ -76,14 +76,30 @@ var markers = data.records;
 var latlng = [];
 for ( var i = 0; i < markers.length; ++i )
 {
+  /*
   var popup = markers[i].name +
               '<br/>' + markers[i].a +
               '<br/><b>IATA/FAA:</b> ' + markers[i].b +
               '<br/><b>ICAO:</b> ' + markers[i].c +
               '<br/><b>Timezone:</b> ' + markers[i].d;
+  */
+  pic = markers[i];
+  var title = pic.b;                                                                                                              //sciname
+  var infoHtml = '<div class="info"><h3>' + title + '</h3>';
+  if(pic.l)       {infoHtml += '<div class="info-body"><img src="' + pic.l + '" class="info-img"/></div><br/>';}                  //pic_url
+  if(pic.a) {infoHtml += 'Catalog number: ' + pic.a + '<br/>';}                                                                   //catalogNumber
+  infoHtml += 'Source portal: <a href="http://www.gbif.org/occurrence/' + pic.g + '" target="_blank">GBIF record</a>' + '<br/>' + //gbifID
+              'Publisher: <a href="http://www.gbif.org/publisher/' + pic.d + '" target="_blank">' + pic.c + '</a><br/>' +         //publisher_id & publisher
+              'Dataset: <a href="http://www.gbif.org/dataset/' + pic.f + '" target="_blank">' + pic.e + '</a><br/>';              //dataset_id & dataset
+  if(pic.j)   {infoHtml += 'Recorded by: ' + pic.j + '<br/>';}                                                                    //recordedBy
+  if(pic.k) {infoHtml += 'Identified by: ' + pic.k + '<br/>';}                                                                    //identifiedBy
+  if(pic.m) {infoHtml += 'Event date: ' + pic.m + '<br/>';}                                                                       //eventDate
+  infoHtml += '</div>';
+
+
 
   var m = L.marker( [markers[i].h, markers[i].i], {icon: myIcon} )
-                  .bindPopup( popup );
+                  .bindPopup( infoHtml );
 
   markerClusters.addLayer( m );
   latlng.push([markers[i].h, markers[i].i]); //add value to array latlng
