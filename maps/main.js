@@ -24,7 +24,7 @@ L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 L.control.navbar().addTo(map);
 //----------------------------------------------------------------------------------------------------------------
 
-var myURL = jQuery( 'script[src$="leaf-demo_v2.js"]' ).attr( 'src' ).replace( 'leaf-demo_v2.js', '' );
+var myURL = jQuery( 'script[src$="main.js"]' ).attr( 'src' ).replace( 'main.js', '' );
 var myIcon = L.icon({
   iconUrl: myURL + 'images/pin24.png',
   iconRetinaUrl: myURL + 'images/pin48.png',
