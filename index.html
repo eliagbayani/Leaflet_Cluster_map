@@ -11,9 +11,8 @@
 
     <!-- Important plugins: https://leafletjs.com/plugins.html -->
 
-    <!-- for fullscreen --> <!-- from here: https://github.com/Leaflet/Leaflet.fullscreen 
+    <!-- for fullscreen --> <!-- from here: https://github.com/Leaflet/Leaflet.fullscreen -->
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
-    -->
     
     <!-- for NavBar --> <!-- from here: https://github.com/davidchouse/Leaflet.NavBar -->
     <link href='vendor/Leaflet.NavBar-master/src/Leaflet.NavBar.css' rel='stylesheet' />
@@ -28,14 +27,9 @@
     <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
     <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js'></script>
     
-    <!-- 
-    <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v1.3.0/leaflet.js'></script>
-    <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.3.0/leaflet.markercluster.js'></script>
-    -->
-    
-    <!-- for fullscreen 
+    <!-- for fullscreen -->
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
-    -->
+    
     <!-- for NavBar -->
     <script src='vendor/Leaflet.NavBar-master/src/Leaflet.NavBar.js'></script>
     
@@ -47,47 +41,10 @@
     
     <!-- loading indicator -->
     <script src='vendor/Leaflet.loading-master/src/Control.Loading.js'></script>
-
   </head>
-
   <body>
     <div id="map" style="width: 1050px; height: 520px; border: 1px solid #AAA;"></div>
-    <!--
-    <div>
-      <p>An example of how to use <a href="https://github.com/Leaflet/Leaflet.markercluster" target="_blank">Leaflet.markercluster</a>.
-      <p>From the article <a href="https://asmaloney.com/2015/06/code/clustering-markers-on-leaflet-maps" target="_blank">Clustering Markers On Leaflet Maps</a>
-      <p>Andy Maloney // <a href="https://asmaloney.com" target="_blank">asmaloney.com</a>
-      <br/>10 June 2015
-      <p><b>[16 Jul 2016]</b> Switched to Leaflet 0.7.7.
-    </div>
-    -->
-    <!-- orig
-    <script type='text/javascript' src='maps/markers.js'></script>
-    <script type='text/javascript' src='maps/leaf-demo.js'></script>
-    -->
     <script type='text/javascript' src='data/1.json'></script> <!-- 5169 281 big -->
     <script type='text/javascript' src='maps/leaf-demo_v2.js'></script>
-
-    <!--
-    <table>
-      <tr>
-      					<th>Remove all clusters</th>
-      					<td>
-      						<button id="freezeMaxButton">freezeAtZoom("max")</button>
-      						<br />
-      						<button id="disableButton" onClick="disable()">disableClustering()</button>
-      					</td>
-      				</tr>
-      				<tr>
-      					<th>Restore normal behaviour</th>
-      					<td>
-      						<button id="unfreezeButton">unfreeze()</button>
-      						<br />
-      						<button id="enableButton" onClick="enable()">enableClustering()</button>
-      					</td>
-      				</tr>
-    </table>
-    -->
-
   </body>
 </html>
