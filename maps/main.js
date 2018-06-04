@@ -74,6 +74,7 @@ for ( var i = 0; i < markers.length; ++i ) {
 map.addLayer( markerClusters );
 
 //----------------------------------------------------------------------------------------------------------------//for Cluster On/Off
+/* working but not perfect. Had a hard time changing the button icon programmatically
 var toggle = L.easyButton({
   id: 'eli',
   states: [{
@@ -96,11 +97,8 @@ var toggle = L.easyButton({
     }
   }]
 });
-
-// if(markers.length < 15000) {
-    toggle.addTo(map);
-// }
-
+toggle.addTo(map);
+*/
 //----------------------------------------------------------------------------------------------------------------
 //for enable disable cluster
 function enable() {
@@ -155,7 +153,7 @@ function get_all_latlongs(markers)
 var checkbx = L.control({position: 'topleft'});
 checkbx.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'checkbx');
-    div.innerHTML = '<form><input id="checkbx" type="checkbox" checked/>Cluster On/Off</form>'; 
+    div.innerHTML = '<form><input id="checkbx" type="checkbox" checked/>Cluster</form>'; 
     return div;
 };
 checkbx.addTo(map);
