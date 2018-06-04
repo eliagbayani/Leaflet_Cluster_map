@@ -13,6 +13,7 @@ var map = L.map( 'map', {
 //listener, good source here: https://leafletjs.com/reference-1.3.0.html#map-zoomend
 map.on('zoomstart', function() {
     enable();
+    document.getElementById("checkbx").checked = true;
 });
 
 L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -110,7 +111,7 @@ function disable() {
     if(getFeaturesInView() <= 1000) {markerClusters.disableClustering();}
     else {
         alert("Cannot un-cluster. Too many points.");
-        control.state('add-markers');
+        document.getElementById("checkbx").checked = true;
     }
 }
 function getFeaturesInView() { //https://stackoverflow.com/questions/22081680/get-a-list-of-markers-layers-within-current-map-bounds-in-leaflet
@@ -149,3 +150,19 @@ function get_all_latlongs(markers)
     }
     return latlng;
 }
+//----------------------------------------------------------------------------------------------------------------
+// create the control
+var checkbx = L.control({position: 'topleft'});
+checkbx.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'checkbx');
+    div.innerHTML = '<form><input id="checkbx" type="checkbox" checked/>Cluster On/Off</form>'; 
+    return div;
+};
+checkbx.addTo(map);
+// add the event handler
+function handleCommand() {
+   // alert("Clicked, checked = " + this.checked);
+   if(this.checked == true) enable();
+   else disable();
+}
+document.getElementById ("checkbx").addEventListener ("click", handleCommand, false);
