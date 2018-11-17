@@ -56,7 +56,7 @@ for ( var i = 0; i < markers.length; ++i ) {
   pic = markers[i];
   var title = '<i>'+pic.b+'</i>';                                                                                                 //sciname
   var infoHtml = '<div class="info"><h3>' + title + '</h3>';
-  if(pic.l)       {infoHtml += '<div class="info-body"><img src="' + pic.l + '" class="info-img"/></div><br/>';}                  //pic_url
+  if(pic.l)       {infoHtml += '<div class="info-body"><img src="' + pic.l + '" class="info-img" style="height:128px;" /></div><br/>';}                  //pic_url
   if(pic.a) {infoHtml += 'Catalog number: ' + pic.a + '<br/>';}                                                                   //catalogNumber
   infoHtml += 'Source portal: <a href="http://www.gbif.org/occurrence/' + pic.g + '" target="_blank">GBIF record</a>' + '<br/>' + //gbifID
               'Publisher: <a href="http://www.gbif.org/publisher/' + pic.d + '" target="_blank">' + pic.c + '</a><br/>' +         //publisher_id & publisher
